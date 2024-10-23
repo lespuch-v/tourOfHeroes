@@ -6,11 +6,17 @@
       <span>{{hero.id}}</span>
     </div>
     <div class="info-row">
-      <label for="hero-name">Hero name: </label>
-      <input id="hero-name"
-             [ngModel]="hero.name"
-             (ngModelChange)="heroChangeName($event)"
-             placeholder="Hero name"/>
+      <div>
+        <label for="hero-name">Hero name: </label>
+        <input id="hero-name"
+               [appLimitCharacters]="maxCharacterLimit"
+               [ngModel]="hero.name"
+               (ngModelChange)="heroChangeName($event)"
+               placeholder="Hero name"/>
+      </div>
     </div>
+    <span class="max-length-reached" *ngIf="hero.name.length >= maxCharacterLimit">
+      Maximum length is {{ maxCharacterLimit }} characters
+    </span>
   </div>
 </div>

@@ -5,13 +5,15 @@ import { HeroService } from '../hero.service';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
 import { distinctUntilChanged, Subject } from 'rxjs';
+import { LimitCharactersDirective } from '../directives/limit-characters.directive';
 
 @Component({
   selector: 'app-hero-detal',
   standalone: true,
   imports: [
     FormsModule,
-    NgIf
+    NgIf,
+    LimitCharactersDirective
   ],
   templateUrl: './hero-detal.component.html',
   styleUrl: './hero-detal.component.css'
@@ -20,6 +22,7 @@ export class HeroDetalComponent implements OnInit, OnDestroy{
   @Input() hero?: Hero;
   @Output() heroChange = new EventEmitter<Hero>();
   private nameSubject = new Subject<string>();
+  maxCharacterLimit: number = 13;
 
   constructor(
     private route: ActivatedRoute,
