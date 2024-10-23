@@ -1,0 +1,16 @@
+<div class="add-hero-container">
+  <input
+    [(ngModel)]="heroName"
+    name="heroName"
+    [appLimitCharacters]="heroService.maxNameLength"
+    type="text"
+    placeholder="Enter hero name"
+  />
+  <button
+    (click)="addHero()"
+    [disabled]="!heroName.trim()"
+    class="add-button"
+  >
+    Add Hero
+  </button>
+</div>

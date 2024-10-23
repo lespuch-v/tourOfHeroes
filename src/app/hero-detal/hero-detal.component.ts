@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
 import { distinctUntilChanged, Subject } from 'rxjs';
 import { LimitCharactersDirective } from '../directives/limit-characters.directive';
+import { MaxLengthMessageComponent } from '../max-lenght-message/max-length-message.component';
 
 @Component({
   selector: 'app-hero-detal',
@@ -13,7 +14,8 @@ import { LimitCharactersDirective } from '../directives/limit-characters.directi
   imports: [
     FormsModule,
     NgIf,
-    LimitCharactersDirective
+    LimitCharactersDirective,
+    MaxLengthMessageComponent
   ],
   templateUrl: './hero-detal.component.html',
   styleUrl: './hero-detal.component.css'

@@ -63,3 +63,7 @@
   padding: 7px;
   flex: 1;
 }
+
+.hero-title{
+  margin-bottom: 0;
+}

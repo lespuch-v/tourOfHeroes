@@ -7,6 +7,8 @@ import { Hero } from './models/models';
 })
 export class HeroService {
 
+  private readonly MAX_NAME_LENGTH = 13;
+
   heroes: Hero[] = [
     { id: 12, name: 'Dr. Nice' },
     { id: 13, name: 'Bombasto' },
@@ -23,6 +25,10 @@ export class HeroService {
 
   getAllHeroes(): Observable<Hero[]> {
     return of(this.heroes);
+  }
+
+  get maxNameLength(): number {
+    return this.MAX_NAME_LENGTH;
   }
 
   getTopRandomHeroes(count: number): Observable<Hero[]> {
@@ -51,5 +57,18 @@ export class HeroService {
       return EMPTY;
     }
     return throwError(() => new Error(`No hero with id ${heroToDelete.id}`));
+  }
+
+  addNewHero(heroName: string): Observable<Hero> {
+    const getNextId = Math.max(...this.heroes.map(hero => hero.id), 0) + 1;
+
+    const newHero: Hero = {
+      id: getNextId,
+      name: heroName
+    }
+    this.heroes.push(newHero)
+
+
+    return of(newHero);
   }
 }
