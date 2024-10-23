@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForOf, NgIf } from '@angular/common';
-import { Hero } from '../../models/models';
+import { Hero } from '../models/models';
 import { HeroService } from '../hero.service';
 
 @Component({

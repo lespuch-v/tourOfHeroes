@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { NgForOf } from '@angular/common';
+import { FirstLetterUppercasePipe } from '../pipes/first-letter-uppercase.pipe';
 
 @Component({
   selector: 'app-menu',
@@ -8,7 +9,8 @@ import { NgForOf } from '@angular/common';
   imports: [
     RouterLink,
     NgForOf,
-    RouterLinkActive
+    RouterLinkActive,
+    FirstLetterUppercasePipe
   ],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css'
