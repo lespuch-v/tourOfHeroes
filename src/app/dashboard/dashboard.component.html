@@ -4,7 +4,5 @@
   [heroes]="topHeroes"
   (heroSelect)="onHeroSelect($event)">
 </app-top-hero>
-<app-hero-detal
-  (heroChange)="onHeroChange($event)"
-  [hero]="selectedHero">
-</app-hero-detal>
+
+<router-outlet></router-outlet>

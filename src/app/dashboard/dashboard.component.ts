@@ -34,6 +34,7 @@ export class DashboardComponent implements OnInit{
 
   onHeroSelect(hero: Hero): void {
     this.selectedHero = hero;
+    this.router.navigate(['hero', hero.id], { relativeTo: this.route });
   }
 
   onHeroChange(hero: Hero): void {
