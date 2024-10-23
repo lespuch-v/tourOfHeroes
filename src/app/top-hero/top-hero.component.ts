@@ -1,14 +1,14 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Hero, HeroConfig } from '../models/models';
-import { JsonPipe, NgForOf } from '@angular/common';
-import { BehaviorSubject } from 'rxjs';
+import { JsonPipe, NgForOf, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-top-hero',
   standalone: true,
   imports: [
     JsonPipe,
-    NgForOf
+    NgForOf,
+    NgIf
   ],
   templateUrl: './top-hero.component.html',
   styleUrl: './top-hero.component.css'

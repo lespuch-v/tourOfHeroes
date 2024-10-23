@@ -29,8 +29,10 @@ export class HeroesComponent {
     })
   }
 
-  deleteHero(id: number): void {
-    console.log('Hero deleted...')
+  deleteHero(hero: Hero): void {
+    this.heroService.deleteHero(hero).subscribe(result => {
+      console.log('Hero deleted...')
+    })
   }
 
 }

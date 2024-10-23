@@ -5,3 +5,6 @@
     {{ hero.name }}
   </p>
 </div>
+<div *ngIf="heroes.length === 0">
+  <p>Ups.. you dont have any heroes. Try to add some.</p>
+</div>

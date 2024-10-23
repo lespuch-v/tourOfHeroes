@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, of, throwError, EMPTY } from 'rxjs';
 import { Hero } from './models/models';
 
 @Injectable({
@@ -41,6 +41,15 @@ export class HeroService {
       this.heroes[index] = { ...hero };
       return of(this.heroes[index]);
     }
-    return throwError(() => new Error(`No Hero found with id ${hero.id}`));
+    return throwError(() => new Error(`No Hero with id ${hero.id}`));
+  }
+
+  deleteHero(heroToDelete: Hero): Observable<void> {
+    const index = this.heroes.findIndex(h => h.id === heroToDelete.id);
+    if (index > -1) {
+      this.heroes.splice(index, 1);
+      return EMPTY;
+    }
+    return throwError(() => new Error(`No hero with id ${heroToDelete.id}`));
   }
 }
