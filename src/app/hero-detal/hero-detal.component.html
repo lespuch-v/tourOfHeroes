@@ -11,7 +11,7 @@
         <input
           id="hero-name"
           [appLimitCharacters]="maxCharacterLimit"
-          [ngModel]="hero.name"
+          [(ngModel)]="hero.name"
           (ngModelChange)="heroChangeName($event)"
           placeholder="Hero name"
         />

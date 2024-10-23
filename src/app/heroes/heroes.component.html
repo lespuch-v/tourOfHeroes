@@ -1,10 +1,10 @@
 <h1 class="hero-title">My Heroes</h1>
+<app-add-new-hero
+(heroAdded)="addHero($event)"
+>
+</app-add-new-hero>
 <ng-container *ngIf="allHeroes.length !== 0; else noHeroes">
   <div>
-    <app-add-new-hero
-      (heroAdded)="addHero($event)"
-    >
-    </app-add-new-hero>
     <div>
       <app-max-length-message
         [currentHeroNameLength]="newHeroName.length"
