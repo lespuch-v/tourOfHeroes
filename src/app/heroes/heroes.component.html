@@ -1,1 +1,28 @@
-<p>heroes works!</p>
+<h1>My Heroes</h1>
+<ng-container *ngIf="allHeroes.length !== 0; else noHeroes">
+  <div>
+    <div *ngFor="let hero of allHeroes" class="hero-stats">
+      <div class="hero-info">
+        <span class="hero-id">{{hero.id}}</span>
+        <span class="hero-name">{{hero.name}}</span>
+      </div>
+      <div class="hero-actions">
+        <button class="btn-hero-delete" (click)="deleteHero(hero.id)">
+          <svg xmlns="http://www.w3.org/2000/svg"
+               height="24px"
+               viewBox="0 -960 960 960"
+               width="24px"
+               fill="#0A0A0A"
+          >
+            <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</ng-container>
+
+<ng-template #noHeroes>
+  You dont have any heroes. Try to add some.
+</ng-template>

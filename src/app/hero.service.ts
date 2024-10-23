@@ -1,4 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { Hero } from '../models/models';
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +21,7 @@ export class HeroService {
 
   constructor() { }
 
-
+  getAllHeroes(): Observable<Hero[]> {
+    return of(this.heroes);
+  }
 }
