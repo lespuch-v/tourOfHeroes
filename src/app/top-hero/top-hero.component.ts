@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Hero, HeroConfig } from '../models/models';
 import { JsonPipe, NgForOf } from '@angular/common';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-top-hero',
@@ -14,5 +15,9 @@ import { JsonPipe, NgForOf } from '@angular/common';
 })
 export class TopHeroComponent {
   @Input() heroes!: Hero[];
+  @Output() heroSelect = new EventEmitter<Hero>();
 
+  onSelect(hero: Hero): void {
+    this.heroSelect.emit(hero)
+  }
 }

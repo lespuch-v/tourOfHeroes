@@ -3,6 +3,7 @@ import { HeroService } from '../hero.service';
 import { Hero, HeroConfig } from '../models/models';
 import { NgForOf, NgIf } from '@angular/common';
 import { TopHeroComponent } from '../top-hero/top-hero.component';
+import { HeroDetalComponent } from '../hero-detal/hero-detal.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,7 +11,8 @@ import { TopHeroComponent } from '../top-hero/top-hero.component';
   imports: [
     NgIf,
     NgForOf,
-    TopHeroComponent
+    TopHeroComponent,
+    HeroDetalComponent
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
@@ -18,6 +20,7 @@ import { TopHeroComponent } from '../top-hero/top-hero.component';
 export class DashboardComponent implements OnInit{
 
   topHeroes: Hero[] = [];
+  selectedHero?: Hero;
 
   constructor(private heroService: HeroService) {}
 
@@ -25,6 +28,21 @@ export class DashboardComponent implements OnInit{
     this.heroService.getTopRandomHeroes(4).subscribe(result => {
       this.topHeroes = result
     })
+  }
+
+  onHeroSelect(hero: Hero): void {
+    this.selectedHero = {...hero};
+    console.log(this.selectedHero);
+  }
+
+  onHeroChange(hero: Hero): void {
+    const index = this.topHeroes.findIndex(h => h.id === hero.id);
+    if (index > -1) {
+      this.topHeroes[index] = {...hero};
+    }
+    if (this.selectedHero?.id === hero.id) {
+      this.selectedHero = {...hero};
+    }
   }
 
 }

@@ -1,3 +1,12 @@
-<h2 class="hero-heading">Top Heroes</h2>
-<app-top-hero [heroes]="topHeroes">
+<h2 id="top-heroes" class="hero-heading">Top Heroes</h2>
+
+<app-top-hero
+  [heroes]="topHeroes"
+  (heroSelect)="onHeroSelect($event)">
 </app-top-hero>
+
+<app-hero-detal
+  *ngIf="selectedHero"
+  (heroChange)="onHeroChange($event)"
+  [hero]="selectedHero">
+</app-hero-detal>

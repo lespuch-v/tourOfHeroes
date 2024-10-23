@@ -1,3 +1,7 @@
 <div class="top-heroes">
-  <p class="hero" *ngFor="let hero of heroes">{{ hero.name }}</p>
+  <p class="hero"
+     *ngFor="let hero of heroes"
+     (click)="onSelect(hero)">
+    {{ hero.name }}
+  </p>
 </div>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { Hero } from './models/models';
 
 @Injectable({
@@ -33,5 +33,14 @@ export class HeroService {
       [shuffleHeroes[i], shuffleHeroes[randomNum]] = [shuffleHeroes[randomNum], shuffleHeroes[i]];
     }
     return of(shuffleHeroes.slice(0, count));
+  }
+
+  updateHero(hero: Hero): Observable<Hero> {
+    const index = this.heroes.findIndex(h => h.id === hero.id);
+    if (index > -1) {
+      this.heroes[index] = { ...hero };
+      return of(this.heroes[index]);
+    }
+    return throwError(() => new Error(`No Hero found with id ${hero.id}`));
   }
 }
