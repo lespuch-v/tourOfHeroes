@@ -1,3 +1,10 @@
 <ul>
-  <li *ngFor="let route of menuRoutes" [routerLink]="route">{{ route }}</li>
+  <li class="nav-list-items" *ngFor="let route of menuRoutes">
+    <a class="nav-item"
+       [routerLink]="route"
+       routerLinkActive="nav-active"
+    >
+      {{route}}
+    </a>
+  </li>
 </ul>

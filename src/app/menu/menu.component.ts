@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { NgForOf } from '@angular/common';
 
 @Component({
@@ -7,7 +7,8 @@ import { NgForOf } from '@angular/common';
   standalone: true,
   imports: [
     RouterLink,
-    NgForOf
+    NgForOf,
+    RouterLinkActive
   ],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css'
