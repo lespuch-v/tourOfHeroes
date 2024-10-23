@@ -1,10 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TopHeroComponent } from './top-hero.component';
+import { Hero } from '../models/models';
 
 describe('TopHeroComponent', () => {
   let component: TopHeroComponent;
   let fixture: ComponentFixture<TopHeroComponent>;
+
+  const mockHeroes: Hero[] = [
+    { id: 12, name: 'Dr. Alpachino' },
+  ];
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -14,7 +19,8 @@ describe('TopHeroComponent', () => {
 
     fixture = TestBed.createComponent(TopHeroComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+
+    component.heroes = mockHeroes;
   });
 
   it('should create', () => {

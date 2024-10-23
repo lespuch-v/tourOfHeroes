@@ -17,13 +17,13 @@ describe('AppComponent', () => {
   it(`should have the 'tourOfHeroes' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('tourOfHeroes');
+    expect(app.title).toEqual('Tour of Heroes');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, tourOfHeroes');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Tour of Heroes');
   });
 });
