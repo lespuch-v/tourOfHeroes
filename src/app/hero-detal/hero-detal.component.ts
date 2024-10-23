@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HeroService } from '../hero.service';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
-import { distinctUntilChanged, Subject } from 'rxjs';
+import { map, Subject, switchMap, takeUntil } from 'rxjs';
 import { LimitCharactersDirective } from '../directives/limit-characters.directive';
 import { MaxLengthMessageComponent } from '../max-lenght-message/max-length-message.component';
 
@@ -23,6 +23,7 @@ import { MaxLengthMessageComponent } from '../max-lenght-message/max-length-mess
 export class HeroDetalComponent implements OnInit, OnDestroy{
   @Input() hero?: Hero;
   @Output() heroChange = new EventEmitter<Hero>();
+  private destroy$ = new Subject<void>();
   private nameSubject = new Subject<string>();
   maxCharacterLimit: number = 13;
 
@@ -32,24 +33,19 @@ export class HeroDetalComponent implements OnInit, OnDestroy{
   ) {}
 
   ngOnInit() {
-    this.nameSubject.pipe(
-      distinctUntilChanged()
-    ).subscribe(newName => {
-      if (this.hero) {
-        const updatedHero: Hero = {
-          ...this.hero,
-          name: newName
-        };
-        this.heroService.updateHero(updatedHero).subscribe({
-          next: (savedHero) => {
-            this.hero = savedHero;
-            this.heroChange.emit(savedHero);
-          },
-          error: (error) => {
-            console.error('Error saving hero:', error);
-          }
-        });
-      }
+    this.route.params.pipe(
+      switchMap(params => {
+        const id = Number(params['id']);
+        return this.heroService.getAllHeroes().pipe(
+          map(heroes => {
+            const foundHero = heroes.find(h => h.id === id);
+            return foundHero;
+          })
+        );
+      }),
+      takeUntil(this.destroy$)
+    ).subscribe(hero => {
+      this.hero = hero;
     });
   }
 
@@ -58,6 +54,7 @@ export class HeroDetalComponent implements OnInit, OnDestroy{
   }
 
   ngOnDestroy() {
-    this.nameSubject.complete();
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }
