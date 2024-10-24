@@ -14,5 +14,4 @@ export class LimitCharactersDirective {
       myInput.value = myInput.value.slice(0, this.maxLength);
     }
   }
-
 }

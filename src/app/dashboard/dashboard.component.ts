@@ -36,19 +36,4 @@ export class DashboardComponent implements OnInit{
     this.selectedHero = hero;
     this.router.navigate(['hero', hero.id], { relativeTo: this.route });
   }
-
-  onHeroChange(hero: Hero): void {
-    const index = this.topHeroes.findIndex(h => h.id === hero.id);
-    if (index > -1) {
-      this.topHeroes[index] = {...hero};
-    }
-    if (this.selectedHero?.id === hero.id) {
-      this.selectedHero = {...hero};
-    }
-  }
-
-
-  isDetailView(): boolean {
-    return this.router.url.includes('hero');
-  }
 }

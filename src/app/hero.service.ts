@@ -7,7 +7,7 @@ import { Hero } from './models/models';
 })
 export class HeroService {
 
-  private readonly MAX_NAME_LENGTH = 13;
+  private readonly maxNameCharLength = 13;
 
   heroes: Hero[] = [
     { id: 12, name: 'Dr. Nice' },
@@ -28,7 +28,7 @@ export class HeroService {
   }
 
   get maxNameLength(): number {
-    return this.MAX_NAME_LENGTH;
+    return this.maxNameCharLength;
   }
 
   getTopRandomHeroes(count: number): Observable<Hero[]> {

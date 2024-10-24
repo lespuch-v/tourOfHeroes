@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForOf, NgIf } from '@angular/common';
 import { Hero } from '../models/models';
 import { HeroService } from '../hero.service';
@@ -21,7 +21,7 @@ import { AddNewHeroComponent } from './add-new-hero/add-new-hero.component';
   templateUrl: './heroes.component.html',
   styleUrl: './heroes.component.css'
 })
-export class HeroesComponent {
+export class HeroesComponent implements OnInit{
   allHeroes: Hero[] = []
   newHeroName: string = '';
 

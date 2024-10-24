@@ -1,9 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { NgForOf, NgIf } from '@angular/common';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { LimitCharactersDirective } from '../../directives/limit-characters.directive';
-import { MaxLengthMessageComponent } from '../../max-lenght-message/max-length-message.component';
-import { Hero } from '../../models/models';
 import { HeroService } from '../../hero.service';
 
 @Component({

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Hero, HeroConfig } from '../models/models';
+import { Hero } from '../models/models';
 import { JsonPipe, NgForOf, NgIf } from '@angular/common';
 
 @Component({
