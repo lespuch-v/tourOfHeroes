@@ -2,6 +2,10 @@
 
 An Angular application that helps manage a heroes.
 
+Enhanced UI
+https://tour-of-heroes-ui-gilt.vercel.app/heroes
+https://github.com/lespuch-v/tourOfHeroesUI
+
 ## Pictures
 
 ![image](https://github.com/user-attachments/assets/3fd8bd25-e942-46df-b143-b4adb8dd3207)
